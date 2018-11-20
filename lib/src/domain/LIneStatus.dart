@@ -1,1 +1,1 @@
-enum LineStatus { none, running, stopped, paused }
+enum LineStatus { ended, normal, unavailable, paralyzed, partial, slow }
