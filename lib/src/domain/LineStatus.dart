@@ -1,1 +1,3 @@
-enum LineStatus { ended, normal, unavailable, paralyzed, partial, slow }
+enum LineStatus {
+  ended, normal, unavailable, paralyzed, partial, slow,
+}
