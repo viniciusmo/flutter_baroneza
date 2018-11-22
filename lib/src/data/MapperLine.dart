@@ -4,11 +4,15 @@ import 'package:baroneza/src/domain/LineType.dart';
 
 class MapperLine {
   static Line fromJson(Map<String, dynamic> json) {
-    return Line(json['id'], json['id'], json['name'],
-        statusfromString(json["status"]["type"]), LineType.cptm);
+    return Line(
+        json['id'],
+        json['description'],
+        json['name'],
+        _statusfromString(json["status"]["type"]),
+        _lineTypefromString(json["type"]));
   }
 
-  static LineStatus statusfromString(String lineStatus) {
+  static LineStatus _statusfromString(String lineStatus) {
     switch (lineStatus) {
       case "ENDED":
         return LineStatus.ended;
@@ -27,6 +31,23 @@ class MapperLine {
         break;
       default:
         return LineStatus.ended;
+        break;
+    }
+  }
+
+  static LineType _lineTypefromString(String lineType) {
+    switch (lineType) {
+      case "CPTM":
+        return LineType.cptm;
+        break;
+      case "METRO":
+        return LineType.metro;
+        break;
+      case "VIAQUATRO":
+        return LineType.viaquatro;
+        break;
+      default:
+        return LineType.unknown;
         break;
     }
   }

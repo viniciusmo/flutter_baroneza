@@ -1,1 +1,1 @@
-enum LineType { cptm, metro, viaquatro}
+enum LineType { cptm, metro, viaquatro,unknown}
