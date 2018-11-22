@@ -17,7 +17,7 @@ class LineRepositoryImpl implements LineRepository {
       }
       return result;
     } else {
-      throw Exception('Failed to load post');
+      throw Exception('Failed to load line status');
     }
   }
 }
