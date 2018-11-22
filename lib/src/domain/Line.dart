@@ -10,8 +10,8 @@ class Line {
 
   Line(this.id, this.description, this.name, this.status, this.type);
 
-  factory Line.fromJson(Map<String, dynamic> json) {
-    return Line(
-        json['id'], json['id'], json['name'], LineStatus.ended, LineType.cptm);
+  @override
+  String toString() {
+    return "Line(id=$id description=$description name=$name  status=$status type=$type)";
   }
 }
