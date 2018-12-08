@@ -1,8 +1,11 @@
+import 'package:baroneza/src/data/lines_repository_impl.dart';
+import 'package:baroneza/src/presentation/bloc/company_view_model.dart';
+import 'package:baroneza/src/presentation/bloc/lines_bloc.dart';
+import 'package:baroneza/src/presentation/bloc/list_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ListLines extends StatefulWidget {
-
   @override
   _ListLinesState createState() => _ListLinesState();
 }
@@ -10,19 +13,30 @@ class ListLines extends StatefulWidget {
 class _ListLinesState extends State<ListLines> {
   @override
   Widget build(BuildContext context) {
+    var bloc = LinesBloc(LinesRepositoryImpl());
+    bloc.getAllLines();
     return Scaffold(
       appBar: AppBar(
         title: Text("Situação linhas"),
       ),
-      body: ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            if (index == 0) {
-              return Header();
-            } else {
-              return NewWidget();
+      body: StreamBuilder(
+          stream: bloc.outAllLines,
+          builder: (_, AsyncSnapshot<List<ListItem>> snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    final item = snapshot.data[index];
+                    if (item is CompanyViewModel) {
+                      return Header();
+                    } else {
+                      return NewWidget();
+                    }
+                  });
+            }else{
+              return Text("Loading");
             }
-          },
-          itemCount: 3),
+          }),
     );
   }
 }
