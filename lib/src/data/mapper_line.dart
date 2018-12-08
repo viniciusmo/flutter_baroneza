@@ -1,8 +1,10 @@
-import 'package:baroneza/src/domain/LIneStatus.dart';
-import 'package:baroneza/src/domain/Line.dart';
-import 'package:baroneza/src/domain/LineType.dart';
+
+import 'package:baroneza/src/domain/line.dart';
+import 'package:baroneza/src/domain/line_status.dart';
+import 'package:baroneza/src/domain/line_type.dart';
 
 class MapperLine {
+
   static Line fromJson(Map<String, dynamic> json) {
     return Line(
         json['id'],

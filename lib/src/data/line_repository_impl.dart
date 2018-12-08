@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'package:baroneza/src/data/MapperLine.dart';
-import 'package:baroneza/src/domain/Line.dart';
-import 'package:baroneza/src/domain/repository/LineRepository.dart';
+import 'package:baroneza/src/data/mapper_line.dart';
+import 'package:baroneza/src/domain/line.dart';
+import 'package:baroneza/src/domain/repository/line_repository.dart';
 import 'package:http/http.dart' as http;
 
 class LineRepositoryImpl implements LineRepository {
+
   @override
   Future<List<Line>> all() async {
     final response =
