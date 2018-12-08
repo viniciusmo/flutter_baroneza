@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:baroneza/src/domain/line.dart';
-import 'package:baroneza/src/domain/repository/line_repository.dart';
 import 'package:baroneza/src/presentation/bloc/bloc_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LinesBloc implements BlocBase {
-  final LineRepository _repository;
+  final LinesRepository _repository;
   final _allLines = PublishSubject<List<Line>>();
 
   Observable<List<Line>> get outAllLines => _allLines.stream;
