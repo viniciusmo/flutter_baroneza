@@ -1,4 +1,4 @@
-import 'package:baroneza/src/domain/line.dart';
+import 'package:baroneza/src/domain/company.dart';
 
 abstract class LinesRepository {
   Future<List<Company>> all() => null;

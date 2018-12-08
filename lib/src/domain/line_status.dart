@@ -1,3 +1,8 @@
-enum LineStatus {
-  ended, normal, unavailable, paralyzed, partial, slow,
+class LineStatus {
+
+  final String name;
+  final String color;
+
+  LineStatus(this.name,this.color);
+
 }

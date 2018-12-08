@@ -1,10 +1,8 @@
-class LineViewModel {
-  final String statusColor;
-  final String lineColor;
-  final String description;
-  final String number;
-  final String name;
+import 'package:baroneza/src/domain/line.dart';
+import 'package:baroneza/src/presentation/bloc/list_item.dart';
 
-  LineViewModel(this.statusColor, this.lineColor, this.description, this.number,
-      this.name);
+class LineViewModel extends ListItem {
+  final Line line;
+
+  LineViewModel(this.line);
 }

@@ -1,8 +1,8 @@
-import 'package:baroneza/src/presentation/bloc/row_type.dart';
+import 'package:baroneza/src/domain/company.dart';
+import 'package:baroneza/src/presentation/bloc/list_item.dart';
 
-class CompanyViewModel extends RowType {
-  final String name;
-  final String image;
+class CompanyViewModel extends ListItem {
+  final Company company;
 
-  CompanyViewModel(this.name,this.image);
+  CompanyViewModel(this.company);
 }

@@ -1,4 +1,4 @@
-import 'package:baroneza/src/data/line_repository_impl.dart';
+import 'package:baroneza/src/data/lines_repository_impl.dart';
 import 'package:baroneza/src/presentation/bloc/bloc_provider.dart';
 import 'package:baroneza/src/presentation/bloc/lines_bloc.dart';
 import 'package:baroneza/src/presentation/view/list_lines.dart';
@@ -14,7 +14,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       home: BlocProvider(
-        bloc: LinesBloc(LineRepositoryImpl()),
+        bloc: LinesBloc(LinesRepositoryImpl()),
         child: ListLines(),
       ),
     );
