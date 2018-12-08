@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ListLines extends StatefulWidget {
-  ListLines({Key key, this.title}) : super(key: key);
-
-  final String title;
 
   @override
   _ListLinesState createState() => _ListLinesState();
@@ -15,7 +12,7 @@ class _ListLinesState extends State<ListLines> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Situação linhas"),
       ),
       body: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
