@@ -1,14 +1,15 @@
 import 'package:baroneza/src/domain/line_status.dart';
 
 class Line {
-  String description;
-  String name;
-  LineStatus status;
+  final String name;
+  final LineStatus status;
+  final String color;
+  final String id;
 
-  Line(this.description, this.name, this.status);
+  Line(this.id,this.name, this.status,this.color);
 
   @override
   String toString() {
-    return "Line(description=$description name=$name  status=$status)";
+    return "Line(name=$name  status=$status)";
   }
 }
