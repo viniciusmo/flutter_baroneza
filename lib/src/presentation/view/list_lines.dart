@@ -13,33 +13,43 @@ class ListLines extends StatefulWidget {
 }
 
 class _ListLinesState extends State<ListLines> {
+
+  var bloc = LinesBloc(LinesRepositoryImpl());
+
   @override
   Widget build(BuildContext context) {
-    var bloc = LinesBloc(LinesRepositoryImpl());
     bloc.getAllLines();
     return Scaffold(
       appBar: AppBar(
         title: Text("Situação linhas"),
       ),
-      body: StreamBuilder(
-          stream: bloc.outAllLines,
-          builder: (_, AsyncSnapshot<List<ListItem>> snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, index) {
-                    final item = snapshot.data[index];
-                    if (item is CompanyViewModel) {
-                      return CompanyWidget(item);
-                    } else if (item is LineViewModel) {
-                      return LineWidget(item);
-                    }
-                  });
-            } else {
-              return Text("Loading");
-            }
-          }),
+      body: RefreshIndicator(
+        onRefresh: _onRefresh,
+        child: StreamBuilder(
+            stream: bloc.outAllLines,
+            builder: (_, AsyncSnapshot<List<ListItem>> snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      final item = snapshot.data[index];
+                      if (item is CompanyViewModel) {
+                        return CompanyWidget(item);
+                      } else if (item is LineViewModel) {
+                        return LineWidget(item);
+                      }
+                    });
+              } else {
+                return Text("Loading");
+              }
+            }),
+      ),
     );
+  }
+
+  Future<Null> _onRefresh() async {
+    bloc.getAllLines();
+    return null;
   }
 }
 
