@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:baroneza/src/data/mapper_company.dart';
+import 'package:baroneza/src/data/mapper/mapper_company.dart';
 import 'package:baroneza/src/domain/company.dart';
 import 'package:baroneza/src/domain/repository/lines_repository.dart';
 import 'package:http/http.dart' as http;

@@ -1,4 +1,4 @@
-import 'package:baroneza/src/data/mapper_line_status.dart';
+import 'package:baroneza/src/data/mapper/mapper_line_status.dart';
 import 'package:baroneza/src/domain/line.dart';
 import 'package:baroneza/src/domain/line_status.dart';
 
