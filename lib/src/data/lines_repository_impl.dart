@@ -9,7 +9,7 @@ class LinesRepositoryImpl implements LinesRepository {
   @override
   Future<List<Company>> all() async {
     final response =
-        await http.get("https://api.jsonbin.io/b/5c0c6e601deea01014bfaf6e/2");
+        await http.get("https://us-central1-ligado-nos-trens.cloudfunctions.net/allLines");
     if (response.statusCode == 200) {
       var result = List<Company>();
       var companiesJson = json.decode(response.body);

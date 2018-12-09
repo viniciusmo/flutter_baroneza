@@ -4,7 +4,8 @@ import 'package:baroneza/src/domain/line_status.dart';
 
 class MapperLine {
   static Line fromJson(Map<String, dynamic> json) {
-    LineStatus status = MapperLineStatus.fromJson(json["status"]);
-    return Line(json["id"], json["name"], status,json["color"]);
+    LineStatus status = MapperLineStatus.fromJson(json);
+    return Line(json["lineId"].toString(), json["name"], status, json["lineColor"]);
   }
+
 }
