@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "177186370421",
+    "firebase_url": "https://ligado-nos-trens.firebaseio.com",
+    "project_id": "ligado-nos-trens",
+    "storage_bucket": "ligado-nos-trens.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177186370421:android:6687d451d49df96e",
+        "android_client_info": {
+          "package_name": "com.viniciusmo.baroneza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177186370421-j4gpesb3430cje6k04r9lelodgc6fthk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9xNSko44MZ0xd8mB1srxDYOpGFQhB-xc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

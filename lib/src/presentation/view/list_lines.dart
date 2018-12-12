@@ -6,6 +6,8 @@ import 'package:baroneza/src/presentation/bloc/list_item.dart';
 import 'package:baroneza/src/presentation/helper/Strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ListLines extends StatefulWidget {
   @override
@@ -13,23 +15,34 @@ class ListLines extends StatefulWidget {
 }
 
 class _ListLinesState extends State<ListLines> {
-
   var bloc = LinesBloc(LinesRepositoryImpl());
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+    _firebaseMessaging.getToken().then((token) {
+      Firestore.instance
+          .collection('tokens')
+          .document(token)
+          .setData({"token": token});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     bloc.getAllLines();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Situação linhas"),
+        title: Text("Situação TESTE 1"),
       ),
-      body: RefreshIndicator(
-        onRefresh: _onRefresh,
-        child: StreamBuilder(
-            stream: bloc.outAllLines,
-            builder: (_, AsyncSnapshot<List<ListItem>> snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
+      body: StreamBuilder(
+          stream: bloc.outAllLines,
+          builder: (_, AsyncSnapshot<List<ListItem>> snapshot) {
+            if (snapshot.hasData) {
+              return RefreshIndicator(
+                onRefresh: _onRefresh,
+                child: ListView.builder(
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
                       final item = snapshot.data[index];
@@ -38,12 +51,12 @@ class _ListLinesState extends State<ListLines> {
                       } else if (item is LineViewModel) {
                         return LineWidget(item);
                       }
-                    });
-              } else {
-                return Text("Loading");
-              }
-            }),
-      ),
+                    }),
+              );
+            } else {
+              return Text("Loading");
+            }
+          }),
     );
   }
 
@@ -64,9 +77,7 @@ class CompanyWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Row(
         children: <Widget>[
-          Image.network(_companyViewModel.company.image,
-              width: 30,
-              height: 30),
+          Image.network(_companyViewModel.company.image, width: 30, height: 30),
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: Text(_companyViewModel.company.name,

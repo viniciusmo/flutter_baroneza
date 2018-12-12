@@ -12,9 +12,9 @@ class LinesBloc implements BlocBase {
   final LinesRepository _repository;
   final _allLines = PublishSubject<List<ListItem>>();
 
-  Observable<List<ListItem>> get outAllLines => _allLines.stream;
+  Stream<List<ListItem>> get outAllLines => _allLines.stream;
 
-  StreamSink<List<ListItem>> get _inAllLines => _allLines.sink;
+  Sink<List<ListItem>> get _inAllLines => _allLines.sink;
 
   LinesBloc(this._repository);
 
