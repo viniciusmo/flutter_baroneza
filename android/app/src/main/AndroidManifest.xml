@@ -34,6 +34,13 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@drawable/ic_stat_train" />
+            <meta-data android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@android:color/black" />
+
         </activity>
     </application>
 </manifest>

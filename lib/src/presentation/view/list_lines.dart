@@ -54,7 +54,9 @@ class _ListLinesState extends State<ListLines> {
                     }),
               );
             } else {
-              return Text("Loading");
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
           }),
     );
