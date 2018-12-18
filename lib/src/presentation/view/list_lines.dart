@@ -1,4 +1,5 @@
 import 'package:baroneza/src/data/lines_repository_impl.dart';
+import 'package:baroneza/src/domain/interactor/get_lines_interactor.dart';
 import 'package:baroneza/src/presentation/bloc/company_view_model.dart';
 import 'package:baroneza/src/presentation/bloc/line_view_model.dart';
 import 'package:baroneza/src/presentation/bloc/lines_bloc.dart';
@@ -15,7 +16,7 @@ class ListLines extends StatefulWidget {
 }
 
 class _ListLinesState extends State<ListLines> {
-  var bloc = LinesBloc(LinesRepositoryImpl());
+  var bloc =  LinesBloc(GetLinesInteractor(LinesRepositoryImpl()));
 
   @override
   void initState() {
@@ -34,7 +35,7 @@ class _ListLinesState extends State<ListLines> {
     bloc.getAllLines();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Situação TESTE 1"),
+        title: Text("Ligado nos Trens"),
       ),
       body: StreamBuilder(
           stream: bloc.outAllLines,
@@ -98,61 +99,60 @@ class LineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Row(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Container(
-                decoration: BoxDecoration(
-                    color: Strings.toColor((_lineViewModel.line.color)),
-                    shape: BoxShape.circle),
-                height: 60,
-                width: 60,
-                child: Center(
-                    child: Text(_lineViewModel.line.id,
+    return Stack(
+      children: <Widget>[
+        Card(
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Container(
+                    decoration: BoxDecoration(
+                        color: Strings.toColor((_lineViewModel.line.color)),
+                        shape: BoxShape.circle),
+                    height: 60,
+                    width: 60,
+                    child: Center(
+                        child: Text(_lineViewModel.line.id,
+                            style: TextStyle(
+                                fontSize: 25.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)))),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(_lineViewModel.line.name,
                         style: TextStyle(
                             fontSize: 25.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold)))),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(_lineViewModel.line.name,
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold)),
-              Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: Text(_lineViewModel.line.status.name),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 4.0, bottom: 16.0),
-                child: Container(
-                    constraints: new BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width - 120),
-                    child: Text(_lineViewModel.line.status.description)),
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0),
+                    child: Text(_lineViewModel.line.status.name)
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, bottom: 16.0),
+                    child: Container(
+                        constraints: new BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width - 120),
+                        child: Text(_lineViewModel.line.status.description)),
+                  )
+                ],
               )
             ],
           ),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Container(
-                    decoration: BoxDecoration(
-                        color:
-                            Strings.toColor(_lineViewModel.line.status.color)),
-                    height: 80,
-                    width: 5),
-              ],
-            ),
-          )
-        ],
-      ),
+        ),
+        Positioned.fill(
+            child: new Material(
+                color: Colors.transparent,
+                child: new InkWell(
+                  onTap: () => null,
+                )))
+      ],
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:baroneza/src/domain/repository/lines_repository.dart';
 import 'package:http/http.dart' as http;
 
 class LinesRepositoryImpl implements LinesRepository {
+
   @override
   Future<List<Company>> all() async {
     final response =
