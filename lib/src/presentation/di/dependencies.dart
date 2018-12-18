@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-
 class Dependencies {
   static Map<Type, Object> dependencies = HashMap();
 
@@ -15,5 +14,4 @@ class Dependencies {
   static clear<T>() {
     dependencies[T] = null;
   }
-
 }

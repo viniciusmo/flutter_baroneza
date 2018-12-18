@@ -81,9 +81,9 @@ class CompanyWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Row(
         children: <Widget>[
-          Image.network(_companyViewModel.company.image, width: 30, height: 30),
+          Image.network(_companyViewModel.company.image, width: 32, height: 32),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(left: 16.0),
             child: Text(_companyViewModel.company.name,
                 style: TextStyle(fontSize: 32.0, color: Colors.grey)),
           )
