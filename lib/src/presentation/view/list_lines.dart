@@ -4,6 +4,7 @@ import 'package:baroneza/src/presentation/bloc/company_view_model.dart';
 import 'package:baroneza/src/presentation/bloc/line_view_model.dart';
 import 'package:baroneza/src/presentation/bloc/lines_bloc.dart';
 import 'package:baroneza/src/presentation/bloc/list_item.dart';
+import 'package:baroneza/src/presentation/di/dependencies.dart';
 import 'package:baroneza/src/presentation/helper/Strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class ListLines extends StatefulWidget {
 }
 
 class _ListLinesState extends State<ListLines> {
-  var bloc =  LinesBloc(GetLinesInteractor(LinesRepositoryImpl()));
+  var bloc =  Dependencies.get<LinesBloc>();
 
   @override
   void initState() {
